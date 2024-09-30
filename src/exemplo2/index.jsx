@@ -2,24 +2,28 @@ import { useEffect, useState } from "react";
 
 export default function App() {
   
-  const [??,??] = useState([]);
+  const [usuarios,setUsuario] = useState([]);
 
   useEffect(() => { 
 
     const buscarUsuario  = async () => {
-                    = await fetch('');
-        const dados =                ;
+      const respsota = await fetch('https://jsonplaceholder.typicode.com/todos');
+        const dados =  await respsota.json();
         setUsuario(dados);
     }
     buscarUsuario();
-  }, //complete o código);
+  },[]);
 
   return (
     <>
       <h1>Usuário</h1>
-      <ul>
-        {}
-      </ul>
+      <li>
+        {usuarios.map(usuarios =>(
+        <li key={usuarios.id}>
+        <h2>{usuarios.title}</h2>
+        </li>
+      ))}
+      </li>
     </>
   );
 }
